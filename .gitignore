@@ -5,3 +5,5 @@ resource/*
 .vscode/*
 *.mkfile
 *bak
+*.fls
+*.fdb_latexmk
