@@ -623,4 +623,17 @@ F 3 "~" H 2650 4000 50  0001 C CNN
 	1    2650 4000
 	1    0    0    -1  
 $EndComp
+$Comp
+L Device:C C5
+U 1 1 5FA20CA3
+P 2100 1250
+F 0 "C5" H 2215 1296 50  0000 L CNN
+F 1 "4u7" H 2215 1205 50  0000 L CNN
+F 2 "" H 2138 1100 50  0001 C CNN
+F 3 "~" H 2100 1250 50  0001 C CNN
+	1    2100 1250
+	1    0    0    -1  
+$EndComp
+Connection ~ 2100 1100
+Connection ~ 2100 1400
 $EndSCHEMATC
