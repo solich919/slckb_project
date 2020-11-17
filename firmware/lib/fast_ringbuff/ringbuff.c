@@ -1,4 +1,4 @@
-#include <stdlib.h >
+#include <stdlib.h>
 
 struct ring_buffer
 {
@@ -42,9 +42,9 @@ void buffer_write_byte(struct ring_buffer *buffer_name, uint8_t byte)
     buffer_name->write_pointer &= buffer_name->mask;
 }
 
-void buffer_init(struct ring_buffer *buffer_name, uint8_t size)
+void buffer_init(struct ring_buffer *buffer_name, uint8_t n_size)
 {
-    buffer_name->mask = size-1;
+    buffer_name->mask = (1<<n_size)-1;
     buffer_name->buffer = malloc(size);
     buffer_name->write_pointer = 0;
     buffer_name->read_pointer = 0;

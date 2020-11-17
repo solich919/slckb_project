@@ -7,3 +7,4 @@ resource/*
 *bak
 *.fls
 *.fdb_latexmk
+firmware/lib/usb/test

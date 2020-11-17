@@ -1,34 +1,3 @@
-# Hey Emacs, this is a -*- makefile -*-
-#----------------------------------------------------------------------------
-# AVR-GCC Makefile template, derived from the WinAVR template (public domain)
-#
-# --------------------------------- WARNING ---------------------------------
-# Running "make fuses" can and will brick your AVR if you are not careful
-# To avoid this I recommend consulting http://www.engbedded.com/fusecalc
-#
-# ---------------------------------------------------------------------------
-# On command line:
-# make all = Make software.
-# make clean = Clean out built project files.
-# make coff = Convert ELF to AVR COFF.
-# make extcoff = Convert ELF to AVR Extended COFF.
-# make fuses = Burn the fuses using avrdude.
-#              Please customize the avrdude fuse settings below first!
-#
-# make program = Download the hex file to the device, using avrdude.
-#                Please customize the avrdude settings below first!
-#
-# make debug = Start either simulavr or avarice as specified for debugging,
-#              with avr-gdb or avr-insight as the front end for debugging.
-#
-# make filename.s = Just compile filename.c into the assembler code only.
-#
-# make filename.i = Create a preprocessed source file for use in submitting
-#                   bug reports to the GCC project.
-#
-# To rebuild project do "make clean" then "make all".
-# ---------------------------------------------------------------------------
-
 
 MCU = m32u4
 FORMAT = ihex
@@ -128,10 +97,6 @@ AVRDUDE_WRITE_FUSES = -U lfuse:w:e2:m -U hfuse:w:df:m -U efuse:w:ff:m
 # reports about avrdude. See <http://savannah.nongnu.org/projects/avrdude>
 # to submit bug reports.
 #AVRDUDE_VERBOSE = -v -v
-
-AVRDUDE_BASIC = -p $(MCU) -c $(AVRDUDE_PROGRAMMER)
-AVRDUDE_FLAGS = $(AVRDUDE_BASIC) $(AVRDUDE_NO_VERIFY) $(AVRDUDE_VERBOSE) $(AVRDUDE_ERASE_COUNTER)
-
 
 CC = avr-gcc
 OBJCOPY = avr-objcopy
