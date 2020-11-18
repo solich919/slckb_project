@@ -11,6 +11,9 @@
 \usepackage{graphicx}
 \graphicspath{ {./img/} }
 \usepackage{wrapfig}
+\usepackage{array}
+\usepackage{makecell}
+%\renewcommand{\cellalign/theadalign}{vh}
 
 \frenchspacing
 \begin{document}
@@ -19,7 +22,7 @@
 \fancyhead[LO,RE]{Mechatronika}
     \section{Cel projektu}
     Celem projektu jest zbudowanie klawiatury komputerowej w układzie
-    ANSI. Za pracę klawiatury odpowiadać będzie mikrokontroler, który zajmie się 
+    ANSI TKL. Za pracę klawiatury odpowiadać będzie mikrokontroler, który zajmie się 
     komunikacją z komputerem poprzez USB.
     Głównym wyzwaniem projektu jest stworzenie kompletnego układu mikrokontrolera oraz programu
     w postaci modułu, do którego można będzie przyłączyć matrycę przycisków.
@@ -27,7 +30,7 @@
     \section{Założenia projektu}
     Na podstawowe założenia projektu składają się:
         \begin{itemize}
-            \item Układ klawiatury w układzie ANSI
+            \item Układ klawiatury w układzie ANSI TKL
             \item Komunikacja z komputerem poprzez USB
             \item Pooling rate 500Hz lub więcej
             \item Programowy de-bouncing
@@ -63,9 +66,10 @@
     Wybrany mikrokontroler posiada 44 piny. Standardowy układ ANSI posiada 104 klawisze. Z góry widać, że bezpośrednie
     podłączenie przysków do pinów mikrokontrolera nie wystarczy. Zamiast takiego podejścia stosuje się \emph{matrycę przełączników}.
     \newpage
-    \begin{wrapfigure}{l}{0.25\textwidth}
-        \includegraphics[scale=.5]{komar007}
-    \end{wrapfigure}
+    \begin{figure}
+        \centering
+        \includegraphics[width=\textwidth]{1}
+    \end{figure}
     Połączenie przełączników w matrycę pozwala na adresowanie wybranej kolumny przycisków, a następnie ich odczytu.
     Ponieważ podczas odczytu musi być aktywna tylko jedna kolumna, to atrakcyjnym jest zastosowanie dekoderów n do n\textsuperscript{2}.
     Przykładowymi układami mogą być 74HC154 lub 74AHC138. Pierwszy układ to dekoder 4-do-16, zamienia 4 bitową wartość
@@ -77,4 +81,35 @@
     w procesie AHC, który jest znacznie szybszy (wszelkie opóźnienia nie przekraczają 10ns) i łatwiej dostępny.
     Układ ten również można rozszerzyć do 5-do-32. W naszym przypadku jedynie potrzebne jest 16 linii, ale nic nie
     stoi na przeszkodzie, by układ rozubodwać.
+    
+    \begin{center}
+        \begin{tabular}{ |c|c|c|c|c| }
+            \hline
+            \thead{Oznaczenie} & \thead{Opis} & \thead{Tpd} & \thead{Tt} & \thead{Warunki\\An do Qn}  \\ 
+            \hline
+            74HC4515 & \makecell{4-to-16 line decoder/demultiplexer with input latches;inverting} & 50ns & 15ns  & \makecell{4,5V}  \\
+            \hline
+            74HC154 & \makecell{4-to-16 line decoder/demultiplexer} & 30ns & 15ns  & \makecell{4,5V}  \\ 
+            \hline
+            74AHC138 & \makecell{3-to-8 line decoder/demultiplexer; inverting} & 10.1ns & N/A  & \makecell{4,5-5,5V} \\
+            \hline
+        \end{tabular}
+    \end{center}
+    \begin{figure}
+        \centering
+        \includegraphics[width=0.4\textwidth]{2}
+    \end{figure}
+    \begin{center}
+        \begin{tabular}{ |c|c|c|c|c|c|c|c|c| }
+            \hline
+            \thead{Producent} & \thead{SKU} & \thead{n-pin} & \thead{Flash} & \thead{SRAM} & \thead{EEPROM} & \thead{Wydajność} & \thead{Napięcie} & \thead{Peryferia}\\ 
+            \hline
+            Atmel/Microchip & ATMega32U4 & 44 & 32KB & 2,5KB & 1KB & 16MIPS & 2,7-5,5V & \makecell{USB\\JTAG\\SPI\\TWI\\USART\\ADC}\\
+            \hline
+            NXP & MC9S08JM60 & do 64 & do 60KB & do 4KB & N/A & 48MHz &  2,7-5,5V & \makecell{USB\\SPI\\TWI\\ADC\\RTC}\\ 
+            \hline
+            Microchip & PIC18F47J13 & 44 & 128KB & 3760B & N/A & 12MIPS & 2-3,6V & \makecell{USB\\SPI\\TWI\\RTCC\\ADC}\\
+            \hline
+        \end{tabular}
+    \end{center}
 \end{document}
