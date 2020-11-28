@@ -8,7 +8,7 @@ CC			= avr-gcc
 
 TARGET		= main
 
-
+#COMPILE
 
 all: $(TARGET).hex
 
@@ -23,8 +23,12 @@ clean:
 $(TARGET).elf: $(TARGET).o
 	$(CC) $(CFLAGS) $(LDFLAGS) $^ -o $@
 
+#AVRDUDE
+
 program: $(TARGET).hex
 	avrdude -c stk500v2 -P "$(PORT)" -p $(MCU) -U flash:w:$<:i
+
+#DEBUG
 
 disasm:	$(TARGET).elf
 	avr-objdump -d $(TARGET).elf
