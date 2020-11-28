@@ -8,3 +8,8 @@ resource/*
 *.fls
 *.fdb_latexmk
 firmware/lib/usb/test
+*.hex
+*.o
+*.elf
+*.S
+*.s
