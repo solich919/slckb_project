@@ -22,7 +22,7 @@ void UART_Transmit(uint8_t data)
     UDR1 = data;
 }
 
-void UART_Dump(struct ring_buffer *buffer_name)
+void UART_Dump(struct ring_buffer* buffer_name)
 {
     while(!buffer_is_empty(buffer_name))
     {
