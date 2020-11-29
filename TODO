@@ -10,3 +10,5 @@ https://github.com/BathroomEpiphanies/AVR-Keyboard
 Dodać do doc tabelkę porównując 4515 154 138 ok
 Dodać do doc tabelkę porównującą uC innych producentów ok
 Zamienić obrazek ok
+
+timer 8bit 1ms OCR -> prescaler 64, OCR0A = 124 @16MHz
