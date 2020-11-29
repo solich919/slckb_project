@@ -78,16 +78,6 @@ void matrix_scan_subroutine()
     PORTC = 0;
 }
 
-
-
-
-
-
-
-
-
-
-
 int main()
 {
     IO_init();
@@ -101,7 +91,7 @@ int main()
         buffer_string(&UART_FIFO, "Hello world\n\r");
         buffer_string(&UART_FIFO, "topkek\n\r");
         _delay_ms(1000);
-        USART_Dump(&UART_FIFO);
+        UART_Dump(&UART_FIFO);
         //sleep_cpu();
     }
 }

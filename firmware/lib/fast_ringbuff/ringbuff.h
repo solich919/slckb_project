@@ -17,4 +17,4 @@ uint8_t buffer_read_byte(struct ring_buffer *buffer_name);
 void buffer_write_byte(struct ring_buffer *buffer_name, uint8_t byte);
 bool buffer_is_full(struct ring_buffer *buffer_name);
 bool buffer_is_empty(struct ring_buffer *buffer_name);
-void buffer_string(struct ring_buffer *buffer_name, char *string);
+void buffer_string(struct ring_buffer *buffer_name, char string[]);

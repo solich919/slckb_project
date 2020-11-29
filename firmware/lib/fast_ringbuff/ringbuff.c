@@ -59,7 +59,7 @@ void buffer_reset(struct ring_buffer *buffer_name)
     buffer_name->counter = 0;
 }
 
-void buffer_string(struct ring_buffer *buffer_name, char *string)
+void buffer_string(struct ring_buffer *buffer_name, char string[])
 {
     for(uint8_t i = 0; string[i] != 0x00; i++)
         buffer_write_byte(buffer_name, string[i]);
