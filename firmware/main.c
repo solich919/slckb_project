@@ -4,6 +4,8 @@
 #include <avr/sleep.h>
 #include <util/delay.h>
 #include "lib/fast_ringbuff/ringbuff.h"
+#include "lib/simple_uart/simple_uart.h"
+
 
 #define N_OF_ROWS 2
 #define MATRIX_COL_PIN PINB
@@ -77,35 +79,13 @@ void matrix_scan_subroutine()
 }
 
 
-void UART_Init( uint16_t baud )
-{
-    /* Set baud rate */
-    UBRR1H = (uint8_t)(baud>>8);
-    UBRR1L = (uint8_t)baud;
-    /* Enable receiver and transmitter */
-    UCSR1B = (1<<RXEN1)|(1<<TXEN1);
-    /* Set frame format: 8data, 2stop bit */
-    UCSR1C = (1<<USBS1)|(3<<UCSZ10);
-}
-
-void USART_Transmit( uint8_t data )
-{
-    /* Wait for empty transmit buffer */
-    while ( !( UCSR1A & (1<<UDRE1)) )
-    ;
-    /* Put data into buffer, sends the data */
-    UDR1 = data;
-}
 
 
 
-void USART_Dump()
-{
-    while(!buffer_is_empty(&UART_FIFO))
-    {
-        USART_Transmit(buffer_read_byte(&UART_FIFO));
-    }
-}
+
+
+
+
 
 
 int main()
@@ -121,7 +101,7 @@ int main()
         buffer_string(&UART_FIFO, "Hello world\n\r");
         buffer_string(&UART_FIFO, "topkek\n\r");
         _delay_ms(1000);
-        USART_Dump();
+        USART_Dump(&UART_FIFO);
         //sleep_cpu();
     }
 }

@@ -7,7 +7,9 @@ LDFLAGS		= -Wl,-relax -Wl,-gc-sections
 CC			= avr-gcc
 
 TARGET		= main
-OBJS		= main.o lib/fast_ringbuff/ringbuff.o
+OBJS		=	main.o \
+				lib/fast_ringbuff/ringbuff.o \
+				lib/simple_uart/simple_uart.o
 
 #COMPILE
 
