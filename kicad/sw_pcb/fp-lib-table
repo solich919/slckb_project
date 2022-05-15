@@ -1,0 +1,6 @@
+(fp_lib_table
+  (lib (name "Keyboard accessories")(type KiCad)(uri ${KIPRJMOD}/../lib/footprints/keyboard_accessories.pretty)(options "")(descr ""))
+  (lib (name Keyswitches)(type KiCad)(uri ${KIPRJMOD}/../lib/footprints/keyswitches.pretty)(options "")(descr ""))
+  (lib (name Keyswitches_2)(type KiCad)(uri ${KIPRJMOD}/../lib/footprints/Switch_Keyboard_Cherry_MX.pretty)(options "")(descr ""))
+  (lib (name "Keyswitch Stabiliser")(type KiCad)(uri ${KIPRJMOD}/../lib/footprints/Mounting_Keyboard_Stabilizer.pretty)(options "")(descr ""))
+)
